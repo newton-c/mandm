@@ -19,7 +19,6 @@ hoy_diario_de_magdalena
 la_crónica_del_quídio
 #la_nación
 #la_opinion
-#la_patria
 #llano_siete_dias
 #periodismo_público
 #the_archipeligo_press
