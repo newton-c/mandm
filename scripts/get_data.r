@@ -101,5 +101,19 @@ rm(list=ls(pattern="hom[1-9]+"))
 full_df <- full_join(sent, all_hom_df)
 # economic data
 # https://totoro.banrep.gov.co/analytics/saw.dll?Portal
+desem <- read_csv("data/col_gov/desempleo.csv")%>%
+    gather(year_month, unemployment, `2007.03`:`2022.12`) %>%
+    select(Lugar, year_month, unemployment)
 
+total_pop <- read_csv("data/col_gov/total_pop.csv")%>%
+    gather(year_month, total_pop, `2007.03`:`2022.12`) %>%
+    select(Lugar, year_month, total_pop)
+
+working_age_pop <- read_csv("data/col_gov/working_age_pop.csv")%>%
+    gather(year_month, working_age_pop, `2007.03`:`2022.12`) %>%
+    select(Lugar, year_month, working_age_pop)
+
+pops <- full_join(total_pop, working_age_pop)
+employ <- full_join(desem, pops)
 # GPD https://data.imf.org/regular.aspx?key=61545852
+gdp <- read_xlsx("data/col_gov/GDP_and_Components.xlsx") 
